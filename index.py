@@ -1,4 +1,3 @@
-
 import json
 import time
 import base64
@@ -86,7 +85,7 @@ class Text2ImageAPI:
         }
         response_gen = requests.post(self.URL + 'key/api/v1/text2image/run', headers=self.AUTH_HEADERS, files=data_gen).json()
         approximate_time = response_gen['status_time']
-        requests.get(f"https://api.telegram.org/botтокен_телеграмм_бота/sendMessage?chat_id={uid}&text=Время ожидания: {approximate_time}сек.").json()
+        requests.get(f"https://api.telegram.org/bot7171127112:AAEs8ZomragSltS9BJHFYUwJI8NyxgzN49A/sendMessage?chat_id={uid}&text=Время ожидания: {approximate_time}сек.").json()
         print('[', uid,'] Получение ответа при генерации: ', response_gen)
         response_gen = response_gen['uuid']
         
@@ -112,7 +111,7 @@ class Text2ImageAPI:
                         
                 document = open(nameimage, 'rb')
                 
-                url = f"https://api.telegram.org/botтокен_телеграмм_бота/sendDocument"
+                url = f"https://api.telegram.org/bot7171127112:AAEs8ZomragSltS9BJHFYUwJI8NyxgzN49A/sendDocument"
                 response = requests.post(url, data={'chat_id': uid}, files={'document': document})
                 
                 print("Удаляем сгенерированную картинку пользователя ", uid," с директории")
@@ -138,7 +137,7 @@ class Text2ImageAPI:
 
                 reply_markup = keyboard
 
-                requests.get(f"https://api.telegram.org/botтокен_телеграмм_бота/sendMessage?chat_id={uid}&text=Твоё тату готово&reply_markup={reply_markup}").json()
+                requests.get(f"https://api.telegram.org/bot7171127112:AAEs8ZomragSltS9BJHFYUwJI8NyxgzN49A/sendMessage?chat_id={uid}&text=Твоё тату готово&reply_markup={reply_markup}").json()
                 try:
                     del users[uid]
                 except:
@@ -153,7 +152,7 @@ class Text2ImageAPI:
 ''''''
 ''''''
 ''''''
-api = Text2ImageAPI('https://api-key.fusionbrain.ai/', 'токен_кардинского', 'секрет_токен_кардинского')
+api = Text2ImageAPI('https://api-key.fusionbrain.ai/', '528FF82D360D2904B0EDE44217897E12', '126D509D9FD7B21EAB751B31621CCA83')
 
 def kar_generate(promt_text, user_id):
     dirr = "res"
@@ -253,7 +252,7 @@ async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 def main() -> None:
     """Run the bot."""
     # Create the Application and pass it your bot's token.
-    application = Application.builder().token("токен_телеграмм_бота").build()
+    application = Application.builder().token("7171127112:AAEs8ZomragSltS9BJHFYUwJI8NyxgzN49A").build()
 
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("stats", stats))
